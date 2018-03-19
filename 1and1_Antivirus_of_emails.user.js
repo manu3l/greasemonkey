@@ -2,9 +2,9 @@
 // @name      1and1 Antivirus of emails
 // @namespace https://github.com/manu3l/greasemonkey
 // @description Disable antivirus of mail on the 1&1 Customer Area
-// @include     https://clients.1and1.fr/CenterCommunication*
+// @include     https://clients.1and1.fr/email-overview*
 // @include     https://clients.1and1.fr/email-virus-protection/mailbox/*
-// @version     3.0
+// @version     3.1
 // @icon        https://contact.1and1.fr/img/components/header/favicon.ico
 // @run-at      document-end
 // ==/UserScript==/
@@ -39,12 +39,12 @@ function ButtonClickAction(zEvent) {
 /* open url in tabs for antivirus switch */
 function openAntiVirusTab() {
   var links = document.querySelectorAll('td.address > a[href*=\'mailbox\'].email-address');
-  var antiviruslink = document.querySelectorAll('td.column-4 > a, td.column-4 > span');
+  var antiviruslink = document.querySelectorAll('td.column-3 > a, td.column-3 > span');
   for (var J = links.length - 1; J >= 0; --J) {
     var thisLink = links[J];
     var antivirusornot = antiviruslink[J];
     if (antivirusornot.className == 'markup-before icon-font checked') {
-      newURL = thisLink.href.replace(RegExp('https://clients.1and1.fr\\/email-account-details\\/mailbox\\/(.*)?__lf=MsexchangeCreateFlow'), 'https://clients.1and1.fr/email-virus-protection/mailbox/$1?__lf=email_change_type');
+      newURL = thisLink.href.replace(RegExp('https://clients.1and1.fr\\/email-account-details\\/mailbox\\/(.*)'), 'https://clients.1and1.fr/email-virus-protection/mailbox/$1');
       window.open(newURL);
     }
   }
@@ -57,10 +57,10 @@ function clickAV() {
     avButton.click();
     setTimeout(function () {
       window.close();
-    }, 2000);
+    }, 4000);
   }
 }
-var divAntivirus = document.getElementById('email-overview');
+var divAntivirus = document.getElementById('email-overview-table');
 if (divAntivirus) {
   divAntivirus.insertAdjacentHTML('beforebegin', //'<button class="button-a1" id="antivirus" type="button">antivirus</button> ' +
   '<button class="button-a1" id="Allantivirus" type="button" title="Désactive tous les antivirus activé sur l\'affichage courant">Antivirus</button>');
