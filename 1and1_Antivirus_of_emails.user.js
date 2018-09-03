@@ -4,7 +4,7 @@
 // @description Disable antivirus of mail on the 1&1 Customer Area
 // @include     https://clients.1and1.fr/email-overview*
 // @include     https://clients.1and1.fr/email-virus-protection/mailbox/*
-// @version     3.1
+// @version     3.2
 // @icon        https://contact.1and1.fr/img/components/header/favicon.ico
 // @run-at      document-end
 // ==/UserScript==/
@@ -63,7 +63,7 @@ function clickAV() {
 var divAntivirus = document.getElementById('email-overview-table');
 if (divAntivirus) {
   divAntivirus.insertAdjacentHTML('beforebegin', //'<button class="button-a1" id="antivirus" type="button">antivirus</button> ' +
-  '<button class="button-a1" id="Allantivirus" type="button" title="Désactive tous les antivirus activé sur l\'affichage courant">Antivirus</button>');
+  '<button class="button-secondary" id="Allantivirus" type="button" title="Désactive tous les antivirus activé sur l\'affichage courant">Antivirus</button>');
   /* no more used
     document.getElementById('antivirus').addEventListener('click', ButtonClickAction, false);*/
   document.getElementById('Allantivirus').addEventListener('click', openAntiVirusTab, false);
