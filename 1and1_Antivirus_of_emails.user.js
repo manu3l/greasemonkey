@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name      1and1 Antivirus of emails
+// @name      1and1 Ionos - Antivirus of emails
 // @namespace https://github.com/manu3l/greasemonkey
-// @description Disable antivirus of mail on the 1&1 Customer Area
-// @include     https://clients.1and1.fr/email-overview*
-// @include     https://clients.1and1.fr/email-virus-protection/mailbox/*
-// @version     3.2
-// @icon        https://contact.1and1.fr/img/components/header/favicon.ico
+// @description Disable antivirus of mail on the 1&1 Ionos Customer Area
+// @include     https://my.ionos.fr/email-overview*
+// @include     https://my.ionos.fr/email-virus-protection/mailbox/*
+// @version     3.3
+// @icon        https://contact.ionos.fr/img/components/header/favicon.ico
 // @run-at      document-end
 // ==/UserScript==/
 
@@ -17,7 +17,7 @@ function openAntiVirusTab() {
     var thisLink = links[J];
     var antivirusornot = antiviruslink[J];
     if (antivirusornot.className == 'markup-before icon-font checked') {
-      newURL = thisLink.href.replace(RegExp('https://clients.1and1.fr\\/email-account-details\\/mailbox\\/(.*)'), 'https://clients.1and1.fr/email-virus-protection/mailbox/$1');
+      newURL = thisLink.href.replace(RegExp('https://my.ionos.fr\\/email-account-details\\/mailbox\\/(.*)'), 'https://my.ionos.fr/email-virus-protection/mailbox/$1');
       window.open(newURL);
     }
   }
